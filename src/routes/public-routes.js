@@ -19,12 +19,12 @@ const public_routes = [
   exact: true,
   component: lazy(() => import('../containers/outsource/DisplayData')),
   },
-//   {
-//   name: 'Success',
-//   path: '/reject',
-//   exact: true,
-//   component: lazy(() => import('containers/staticPage/Static')),
-//   },
+  {
+  name: 'Landing Page',
+  path: '/',
+  exact: true,
+  component: lazy(() => import('../containers/staticPage/Landing')),
+  },
 //   {
 //   name: 'Success',
 //   path: '/404',

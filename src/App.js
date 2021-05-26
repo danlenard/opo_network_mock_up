@@ -1,10 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
 
 import {Suspense} from 'react'
 
 import AppRouter from './components/AppRouter';
 import public_routes from './routes/public-routes';
+
+import './App.css';
 
 function App() {
   return (

@@ -1,18 +1,16 @@
 const reducer = (state, action) => {
-  const { type, payload } = action;
-  console.log('state',state, action)
+  const { type, payload, index } = action;
   switch (type) {
     case "ADD_TO_DO":
-      console.log('@add', payload)
       return {
         ...state, 
         toDo: [...state.toDo,payload]
       };
     case "DELETE_TO_DO":
-      console.log('@deleted')
+      return {...state, toDo: state.toDo.filter((to_do, i)=>i !== index)};
+    case "DELETE_ALL_TO_DO":
       return {...state, toDo: []};
     default:
-      console.log('@get state', state)
       return state;
   }
 };

@@ -1,9 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {toast} from 'react-toastify';
 import Header from '../../reusable/Header'
 import { GlobalContext } from '../../store/GlobalStore';
-
-let ToDoContext = createContext();
 
 function ToDoForm (){
   //contexts
@@ -27,7 +25,7 @@ function ToDoForm (){
   //ON FINISH FORM FUNCTION
   function handleSubmit(e) {
     e.preventDefault();
-    toast.info('Form has been successfully added.');
+    toast.success('Form has been successfully added.');
     dispatch({type: 'ADD_TO_DO', payload: formData})
     //reset state and form
     document.getElementById("to-do-form").reset();
@@ -41,26 +39,39 @@ function ToDoForm (){
   return (
     <div>
       <Header/>
-      <ToDoContext.Provider value={formData}>
-        <form onSubmit={(e)=>handleSubmit(e)} id="to-do-form"> 
-          <label>
-            Title:
-            <input type="text" name="title" required onSubmit={(e)=>saveData(e)} onBlur={(e)=>saveData(e)} />
-          </label>
-          <br/>
-          <label>
-            Description:
-            <input type="text" name="description" onSubmit={(e)=>saveData(e)} onBlur={(e)=>saveData(e)}/>
-          </label>
-          <br/>
-          <label>
-            Date:
-            <input type="date" name="date" required onSubmit={(e)=>saveData(e)} onBlur={(e)=>saveData(e)}/>
-          </label>
-          <br/>
-            <input type="submit" value="Submit" />
+        <h3 style={{textAlign: 'center', margin: '20px'}}>To Do Form</h3>
+        <form onSubmit={(e)=>handleSubmit(e)} id="to-do-form" 
+          style={{
+            textAlign: 'center', 
+            maxWidth: '400px', 
+            margin: 'auto', 
+            background: '#f2f2f2', 
+            padding: '20px', 
+            borderRadius: '8px'
+          }}
+        > 
+         <table style={{width: '100%'}}>
+          <tr>
+            <td style={{textAlign: 'right'}}>* Title: </td>
+            <td style={{textAlign: 'left'}}>
+              <input type="text" name="title" style={{width: '200px', borderRadius: '5px'}} required onSubmit={(e)=>saveData(e)} onBlur={(e)=>saveData(e)} />
+            </td>
+          </tr>
+          <tr>
+            <td style={{textAlign: 'right'}}>Description: </td>
+            <td style={{textAlign: 'left'}}>
+              <input type="text" name="description" style={{width: '200px', borderRadius: '5px'}} onSubmit={(e)=>saveData(e)} onBlur={(e)=>saveData(e)}/>
+            </td>
+          </tr>
+          <tr>
+            <td style={{textAlign: 'right'}}>* Date: </td>
+            <td style={{textAlign: 'left'}}>
+              <input type="date" name="date" style={{width: '200px', borderRadius: '5px'}} required onSubmit={(e)=>saveData(e)} onBlur={(e)=>saveData(e)}/>
+            </td>
+          </tr>
+        </table> 
+            <input type="submit" value="Submit" style={{width: '100px', borderRadius: '5px', background: 'green', color: 'white'}} />
         </form>
-      </ToDoContext.Provider>
     </div>
   );
 }
