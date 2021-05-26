@@ -9,10 +9,10 @@ import { DataGrid } from '@material-ui/data-grid';
 //table column
 const columns = [
   { field: 'id', headerName: 'ID', width: 100 },
-  { field: 'employee_name', headerName: 'E name', width: 250 },
+  { field: 'employee_name', headerName: 'Employee name', width: 250 },
   { field: 'employee_salary', headerName: 'Salary', width: 150 },
   { field: 'employee_age', headerName: 'Age', type: 'number', width: 110},
-  { field: 'profile_image', headerName: 'Profile Image', width: 150 },
+  // { field: 'profile_image', headerName: 'Profile Image', width: 150 }, hidden due to empty values
   ];
 
 
